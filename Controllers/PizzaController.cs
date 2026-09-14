@@ -33,6 +33,7 @@ public class PizzaController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = pizza.Id }, pizza);
     }
 
+    [HttpPut]
     public IActionResult Update(int id, Pizza pizza)
     {
         if (id != pizza.Id)
