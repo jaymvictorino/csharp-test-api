@@ -33,7 +33,7 @@ public class PizzaController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = pizza.Id }, pizza);
     }
 
-    [HttpPut]
+    [HttpPut("{id}")]
     public IActionResult Update(int id, Pizza pizza)
     {
         if (id != pizza.Id)
@@ -45,6 +45,17 @@ public class PizzaController : ControllerBase
 
         _pizzaService.Update(pizza);
 
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var pizza = _pizzaService.Get(id);
+        if (pizza is null)
+            return NotFound();
+
+        _pizzaService.Delete(id);
         return NoContent();
     }
 }
