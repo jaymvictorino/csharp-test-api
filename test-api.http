@@ -10,3 +10,29 @@ GET {{test_api_HostAddressSec}}/weatherforecast/
 Accept: application/json
 
 ###
+GET {{test_api_HostAddress}}/api/pizza
+
+###
+GET {{test_api_HostAddress}}/api/pizza/3
+
+###
+POST {{test_api_HostAddress}}/api/pizza 
+Content-Type: application/json
+
+{
+    "name": "Pepperoni",
+    "isGlutenFree": false
+}
+
+###
+PUT {{test_api_HostAddress}}/api/pizza/3
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Hawaii",
+    "isGlutenFree" : false
+}
+
+###
+DELETE {{test_api_HostAddress}}/api/pizza/4
