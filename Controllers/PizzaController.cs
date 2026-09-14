@@ -25,4 +25,11 @@ public class PizzaController : ControllerBase
 
         return pizza;
     }
+
+    [HttpPost]
+    public IActionResult Create(Pizza pizza)
+    {
+        _pizzaService.Add(pizza);
+        return CreatedAtAction(nameof(Get), new { id = pizza.Id }, pizza);
+    }
 }
