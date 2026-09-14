@@ -32,4 +32,18 @@ public class PizzaController : ControllerBase
         _pizzaService.Add(pizza);
         return CreatedAtAction(nameof(Get), new { id = pizza.Id }, pizza);
     }
+
+    public IActionResult Update(int id, Pizza pizza)
+    {
+        if (id != pizza.Id)
+            return BadRequest();
+
+        var existingPizza = _pizzaService.Get(id);
+        if (existingPizza is null)
+            return NotFound();
+
+        _pizzaService.Update(pizza);
+
+        return NoContent();
+    }
 }
